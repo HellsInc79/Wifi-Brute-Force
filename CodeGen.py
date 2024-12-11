@@ -1,5 +1,6 @@
 import random
 import string
+import os
 
 def select_choice():
     """Selects a random character, digit, or symbol for password generation."""
@@ -35,7 +36,7 @@ def main():
     print("[==================================================]")
     print("                Key Combinator 1.0.0")
     print("[==================================================]")
-    print("                  Developed By TUX")
+    print("                  Developed By HellsInc")
     print("[==================================================]")
 
     # Get user input for password length limit
@@ -62,13 +63,17 @@ def main():
 
     passwords = generate_passwords(limit_length, passwords_per_length)
 
-    with open("passlist_raw.txt", "w") as file:
+    output_file = "passlist_raw.txt"
+    with open(output_file, "w") as file:
         for password in passwords:
             file.write(password + "\n")
+
+    absolute_path = os.path.abspath(output_file)
 
     print("[==========================]")
     print("  Creating Of List Complete")
     print(f"  Passwords generated: {len(passwords)}")
+    print(f"  Password list saved at: {absolute_path}")
     print("[==========================]")
     print("\nPress any key to exit...")
 
